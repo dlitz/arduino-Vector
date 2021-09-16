@@ -187,6 +187,19 @@ static void test_iterator_reverse_addition_subtraction_inplace() {
   TEST_ASSERT_EQUAL(120, *it3);
 }
 
+static void test_iterator_mutate_values() {
+  auto it = vec.begin();
+  TEST_ASSERT_EQUAL(100, *it);
+  *it = 50;
+  TEST_ASSERT_EQUAL(50, vec.front());
+}
+
+static void test_iterator_reverse_mutate_values() {
+  auto it = vec.rbegin();
+  TEST_ASSERT_EQUAL(130, *it);
+  *it = 50;
+  TEST_ASSERT_EQUAL(50, vec.back());
+}
 
 static void runTests() {
   RUN_TEST(test_iterator_begin);
@@ -205,5 +218,7 @@ static void runTests() {
   RUN_TEST(test_iterator_reverse_postdecrement);
   RUN_TEST(test_iterator_reverse_addition_subtraction);
   RUN_TEST(test_iterator_reverse_addition_subtraction_inplace);
+  RUN_TEST(test_iterator_mutate_values);
+  RUN_TEST(test_iterator_reverse_mutate_values);
 }
 TESTRUNNER(runTests);
