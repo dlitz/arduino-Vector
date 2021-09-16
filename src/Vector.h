@@ -69,6 +69,13 @@ public:
   const_iterator begin() const;
   const_iterator end() const;
 
+  typedef typename iterator::reverse_iterator reverse_iterator;
+  typedef typename const_iterator::reverse_iterator const_reverse_iterator;
+  reverse_iterator rbegin();
+  reverse_iterator rend();
+  const_reverse_iterator rbegin() const;
+  const_reverse_iterator rend()   const;
+
 private:
   T * values_;
   size_t max_size_;

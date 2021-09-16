@@ -38,6 +38,18 @@ public:
     return *this;
   }
 
+  VectorIterator & operator+=(ptrdiff_t n)
+  {
+    position_ += n;
+    return *this;
+  }
+
+  VectorIterator & operator-=(ptrdiff_t n)
+  {
+    position_ -= n;
+    return *this;
+  }
+
   VectorIterator operator++(int)
   {
     auto copy = *this;
@@ -52,6 +64,20 @@ public:
     return copy;
   }
 
+  VectorIterator operator+(ptrdiff_t n) const
+  {
+    auto copy = *this;
+    copy += n;
+    return copy;
+  }
+
+  VectorIterator operator-(ptrdiff_t n) const
+  {
+    auto copy = *this;
+    copy -= n;
+    return copy;
+  }
+
   T & operator*() const
   {
     return *(values_ptr_ + position_);
@@ -60,6 +86,27 @@ public:
 private:
   T * values_ptr_;
   size_t position_;
+
+public:
+  class reverse_iterator {
+  public:
+    reverse_iterator(VectorIterator base = nullptr) : cur{base} {}
+    VectorIterator base() const { return cur; }
+    bool operator!=(const reverse_iterator & other) const { return base() != other.base(); }
+    bool operator==(const reverse_iterator & other) const { return base() == other.base(); }
+    reverse_iterator & operator++()               { --cur; return *this; }
+    reverse_iterator & operator--()               { ++cur; return *this; }
+    reverse_iterator & operator+=(ptrdiff_t n)    { cur -= n; return *this; }
+    reverse_iterator & operator-=(ptrdiff_t n)    { cur += n; return *this; }
+    reverse_iterator operator++(int)              { auto copy = *this; ++(*this); return copy; }
+    reverse_iterator operator--(int)              { auto copy = *this; --(*this); return copy; }
+    reverse_iterator operator+(ptrdiff_t n) const { auto copy = *this; copy += n; return copy; }
+    reverse_iterator operator-(ptrdiff_t n) const { auto copy = *this; copy -= n; return copy; }
+    T & operator*() const { return *cur; }
+  private:
+    VectorIterator cur;
+  };
+
 };
 
 #endif

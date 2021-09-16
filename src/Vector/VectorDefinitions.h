@@ -245,4 +245,28 @@ typename Vector<T>::const_iterator Vector<T>::end() const
   return const_iterator(values_,size_);
 }
 
+template <typename T>
+typename Vector<T>::reverse_iterator Vector<T>::rbegin()
+{
+  return reverse_iterator(this->end() - 1);
+}
+
+template <typename T>
+typename Vector<T>::reverse_iterator Vector<T>::rend()
+{
+  return reverse_iterator(this->begin() - 1);
+}
+
+template <typename T>
+typename Vector<T>::const_reverse_iterator Vector<T>::rbegin() const
+{
+  return const_reverse_iterator(this->end() - 1);
+}
+
+template <typename T>
+typename Vector<T>::const_reverse_iterator Vector<T>::rend() const
+{
+  return const_reverse_iterator(this->begin() - 1);
+}
+
 #endif
