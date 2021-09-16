@@ -12,6 +12,11 @@
       "email": "peterpolidoro@gmail.com",
       "url": "https://projects.peterpolidoro.net/",
       "maintainer": true
+    },
+    {
+      "name": "Darsey Litzenberger",
+      "email": "dlitz@dlitz.net",
+      "url": "https://www.dlitz.net/"
     }
   ],
   "license": "BSD-3-Clause",
