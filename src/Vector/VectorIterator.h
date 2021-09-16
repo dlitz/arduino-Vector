@@ -32,6 +32,26 @@ public:
     return *this;
   }
 
+  VectorIterator & operator--()
+  {
+    --position_;
+    return *this;
+  }
+
+  VectorIterator operator++(int)
+  {
+    auto copy = *this;
+    ++(*this);
+    return copy;
+  }
+
+  VectorIterator operator--(int)
+  {
+    auto copy = *this;
+    --(*this);
+    return copy;
+  }
+
   T & operator*() const
   {
     return *(values_ptr_ + position_);
