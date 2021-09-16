@@ -12,7 +12,7 @@ template<typename T>
 class VectorIterator
 {
 public:
-  VectorIterator(T * values_ptr) : values_ptr_{values_ptr}, position_{0} {}
+  VectorIterator(T * values_ptr = nullptr) : values_ptr_{values_ptr}, position_{0} {}
 
   VectorIterator(T * values_ptr, size_t size) : values_ptr_{values_ptr}, position_{size} {}
 
